@@ -16,8 +16,7 @@
 <script>
 export default {
   name: "Header",
-
-};
+}
 </script>
 
 
@@ -39,7 +38,7 @@ ul{
 li{
   display: inline-block;
   padding: 6px 10px 0;
-  font-size: 16px;
+  font-size: 14px;
 }
 a{
   text-decoration: none;

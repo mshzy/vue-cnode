@@ -9,8 +9,13 @@
 </template>
 
 <style>
+*{
+  padding: 0;
+  box-sizing: border-box;
+}
+li{list-style: none}
 body{
-  background-color: #F6F8FA;
+  background-color: #f6f8fa;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
