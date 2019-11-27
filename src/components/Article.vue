@@ -45,8 +45,8 @@ export default {
 }
 </script>
 
-<style>
-@import url('../assets/markdown-github.css');
+<style scoped>
+@import url("../assets/markdown-github.css");
 .topbar {
   padding: 10px;
   background-color: #f6f6f6;
