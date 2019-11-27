@@ -17,6 +17,9 @@ html {
   margin: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 li{list-style: none}
 body{
   background-color: #f6f8fa;

@@ -14,7 +14,12 @@
       <li :key="index" v-for="(item,index) in items">
         <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
         <span :class="item.class">{{item.tab}}</span>
-        <span class="title">{{item.title}}</span>
+        <router-link :to="{
+          name:'article',
+          params:{id:item.id}
+          }">
+          <span class="title">{{item.title}}</span>
+        </router-link>
         <img class="reply" src="../assets/reply.svg" />
         <span class="replyCount">{{item.reply_count}}/{{item.visit_count}}</span>
         <span class="lastTime">{{item.last_reply_at | formatDate}}</span>
@@ -123,7 +128,7 @@ ul > li > span.good {
   margin-left: 12px;
 }
 ul > li > span.normal {
-  background: #ABABAB;
+  background: #ababab;
   padding: 2px 4px;
   border-radius: 3px;
   border-radius: 3px;
@@ -131,9 +136,10 @@ ul > li > span.normal {
   font-size: 12px;
   margin-left: 12px;
 }
-ul > li > .title {
+ul > li .title {
   font-size: 16px;
   font-weight: 500;
+  color: #24292E;
   margin-left: 14px;
   margin-top: 3px;
 }
