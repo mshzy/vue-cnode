@@ -65,8 +65,12 @@ export default {
   margin: 14px;
   cursor: pointer;
 }
-.loading{
-  width: 20px;
+.loading {
+  margin: 20% 47%;
+}
+.loading > img {
+  width: 26px;
+  animation: circle 3s infinite linear;
 }
 ul > li {
   padding-left: 20px;
@@ -107,5 +111,14 @@ ul > li > .lastTime {
 }
 .avatar {
   width: 30px;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
