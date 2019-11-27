@@ -139,7 +139,7 @@ ul > li > span.normal {
 ul > li .title {
   font-size: 16px;
   font-weight: 500;
-  color: #24292E;
+  color: #24292e;
   margin-left: 14px;
   margin-top: 3px;
 }
