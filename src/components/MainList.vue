@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="mainListWrapper">
     <div class="type">
       <span v-on:click="loadAll">全部</span>
       <span>精华</span>
@@ -49,14 +49,15 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.mainListWrapper {
   border: 1px solid #d1d5da;
   background-color: #ffffff;
   max-width: 72%;
   margin: auto;
 }
 .type {
-  margin: 8px 0 8px 10px;
+  background-color: #F1F8FF;
+  padding: 8px 0 8px 10px;
   font-size: 14px;
   font-weight: bold;
 }

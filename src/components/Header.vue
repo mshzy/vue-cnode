@@ -31,6 +31,7 @@ img{
   display: flex;
   height: 60px;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 ul{
   margin-right: 32px;
