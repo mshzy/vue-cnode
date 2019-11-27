@@ -1,11 +1,11 @@
 <template>
   <div class="mainListWrapper">
     <div class="type">
-      <span v-on:click="loadAll">全部</span>
-      <span>精华</span>
-      <span>分享</span>
-      <span>问答</span>
-      <span>招聘</span>
+      <span @click="loadList()">全部</span>
+      <span @click="loadList('good')">精华</span>
+      <span @click="loadList('share')">分享</span>
+      <span @click="loadList('ask')">问答</span>
+      <span @click="loadList('job')">招聘</span>
     </div>
     <div class="loading" v-if="isLoading">
       <img src="../assets/loading.svg" />
@@ -13,6 +13,7 @@
     <ul>
       <li :key="index" v-for="(item,index) in items">
         <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
+        <span :class="item.class">{{item.tab}}</span>
         <span class="title">{{item.title}}</span>
         <img class="reply" src="../assets/reply.svg" />
         <span class="replyCount">{{item.reply_count}}/{{item.visit_count}}</span>
@@ -31,19 +32,41 @@ export default {
       items: []
     }
   },
-  mounted() {
-    (async () => {
-      let res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
-      this.isLoading = false
-      this.items = res.data.data
-    })()
+  created() {
+    this.loadList()
   },
   methods: {
-    async loadAll() {
-      let res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
+    async loadList(type) {
+      this.isLoading = true
+      this.items = []
+      let res
+      if (type) {
+        let url = `https://cnodejs.org/api/v1/topics?limit=20&page=1&tab=${type}`
+        res = await this.axios.get(url)
+      } else
+        res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
+      this.isLoading = false
+      for (const v of res.data.data) {
+        if (v.good == true) {
+          v.class = 'good'
+          v.tab = '精华'
+        } else if (v.top == true) {
+          v.class = 'good'
+          v.tab = '置顶'
+        } else if (v.tab == 'ask') {
+          v.class = 'normal'
+          v.tab = '问答'
+        } else if (v.tab == 'share') {
+          v.class = 'normal'
+          v.tab = '分享'
+        } else {
+          v.class = 'normal'
+          v.tab = '招聘'
+        }
+      }
       this.items = res.data.data
     }
-  }
+  },
 }
 
 </script>
@@ -56,7 +79,7 @@ export default {
   margin: auto;
 }
 .type {
-  background-color: #F1F8FF;
+  background-color: #f1f8ff;
   padding: 8px 0 8px 10px;
   font-size: 14px;
   font-weight: bold;
@@ -71,7 +94,7 @@ export default {
 }
 .loading > img {
   width: 26px;
-  animation: circle 3s infinite linear;
+  animation: circle 2s infinite linear;
 }
 ul > li {
   padding-left: 20px;
@@ -87,8 +110,26 @@ ul > li:hover {
 }
 ul > li > .reply {
   position: absolute;
-  right: 165px;
+  right: 144px;
   width: 18px;
+}
+ul > li > span.good {
+  background: #80bd01;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 12px;
+}
+ul > li > span.normal {
+  background: #ABABAB;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 12px;
 }
 ul > li > .title {
   font-size: 16px;
@@ -99,7 +140,7 @@ ul > li > .title {
 ul > li > .replyCount {
   color: #8d8d8d;
   position: absolute;
-  left: 85%;
+  left: 87%;
   font-size: 12px;
   font-weight: bold;
 }

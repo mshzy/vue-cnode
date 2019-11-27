@@ -9,6 +9,9 @@
 </template>
 
 <style>
+html {
+  overflow-y: scroll;
+}
 *{
   padding: 0;
   margin: 0;
