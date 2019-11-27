@@ -23,7 +23,7 @@ export default {
 <style scoped>
 img{
   padding: 0 20px 4px;
-  max-width: 150px;
+  max-width: 200px;
 }
 .wrapper{
   box-shadow: 0 1px 3px rgba(26,26,26,.1);
@@ -37,7 +37,7 @@ ul{
 }
 li{
   display: inline-block;
-  padding: 6px 10px 0;
+  padding: 24px 10px 0;
   font-size: 14px;
 }
 a{

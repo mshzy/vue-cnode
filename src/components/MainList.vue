@@ -1,11 +1,22 @@
 <template>
   <div class="wrapper">
+    <div class="type">
+      <span v-on:click="loadAll">全部</span>
+      <span>精华</span>
+      <span>分享</span>
+      <span>问答</span>
+      <span>招聘</span>
+    </div>
+    <div class="loading" v-if="isLoading">
+      <img src="../assets/loading.svg" />
+    </div>
     <ul>
       <li :key="index" v-for="(item,index) in items">
         <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
-        <span>{{item.title}}</span>
+        <span class="title">{{item.title}}</span>
         <img class="reply" src="../assets/reply.svg" />
         <span class="replyCount">{{item.reply_count}}/{{item.visit_count}}</span>
+        <span class="lastTime">{{item.last_reply_at | formatDate}}</span>
       </li>
     </ul>
   </div>
@@ -16,25 +27,49 @@ export default {
   name: 'MainList',
   data() {
     return {
-      items: [],
+      isLoading: true,
+      items: []
     }
   },
   mounted() {
     (async () => {
       let res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
+      this.isLoading = false
       this.items = res.data.data
     })()
+  },
+  methods: {
+    async loadAll() {
+      let res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
+      this.items = res.data.data
+    }
   }
 }
+
 </script>
 
 <style scoped>
 .wrapper {
+  border: 1px solid #d1d5da;
   background-color: #ffffff;
   max-width: 72%;
   margin: auto;
 }
+.type {
+  margin: 8px 0 8px 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.type span {
+  color: #1067d6;
+  margin: 14px;
+  cursor: pointer;
+}
+.loading{
+  width: 20px;
+}
 ul > li {
+  padding-left: 20px;
   min-height: 52px;
   border-top: 1px solid #e1e4e8;
   position: relative;
@@ -42,15 +77,33 @@ ul > li {
   justify-content: flex-start;
   align-items: center;
 }
+ul > li:hover {
+  background-color: #f6f8fa;
+}
 ul > li > .reply {
   position: absolute;
-  right: 200px;
+  right: 165px;
   width: 18px;
 }
+ul > li > .title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 14px;
+  margin-top: 3px;
+}
 ul > li > .replyCount {
+  color: #8d8d8d;
   position: absolute;
-  left: 81%;
-  font-size: 14px;
+  left: 85%;
+  font-size: 12px;
+  font-weight: bold;
+}
+ul > li > .lastTime {
+  margin-left: auto;
+  margin-right: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8d8d8d;
 }
 .avatar {
   width: 30px;
