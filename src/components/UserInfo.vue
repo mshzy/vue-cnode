@@ -9,7 +9,7 @@
     <section class="replies">
       <span>最近参与的主题</span>
       <router-link
-        :to="{path:`/article/${item.id}`}"
+        :to="{name:'article',params:{id:item.id}}"
         v-for="item in user.recent_replies"
         :key="item.id"
       >{{item.title}}</router-link>

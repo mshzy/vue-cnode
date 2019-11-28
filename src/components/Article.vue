@@ -50,7 +50,7 @@ export default {
   background-color: #f6f8fa;
   padding: 8px 0 6px 12px;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .article {
@@ -67,7 +67,7 @@ export default {
 #reply {
   position: relative;
   margin-top: 30px;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 #reply img {
@@ -126,7 +126,7 @@ export default {
 
 .topic_content {
   padding: 10px 20px;
-  font-weight: 400;
+  font-weight: 450;
   line-height: 2;
 }
 .replyContent {
