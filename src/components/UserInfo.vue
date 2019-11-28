@@ -46,11 +46,19 @@ export default {
 </script>
 
 <style scoped>
+.replies{
+  display: flex;
+  flex-direction: column;
+}
+.topics{
+  display: flex;
+  flex-direction: column;
+}
 img {
   border-radius: 10px;
   width: 100px;
 }
-a {
-  display: block;
+a{
+  align-self: flex-start
 }
 </style>

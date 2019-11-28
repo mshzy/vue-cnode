@@ -19,6 +19,7 @@ html {
 }
 a{
   text-decoration: none;
+  color: #1067D6;
 }
 li{list-style: none}
 body{
