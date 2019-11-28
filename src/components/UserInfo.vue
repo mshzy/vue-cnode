@@ -3,7 +3,7 @@
     <section class="mainInfo">
       <img :src="user.avatar_url" alt="头像" />
       <span class="id">{{user.loginname}}</span>
-      <div class="score">{{user.score}}</div>
+      <div class="score">积分：{{user.score}}</div>
       <div class="signTime">注册时间：{{signTime}}</div>
     </section>
     <section class="replies">
