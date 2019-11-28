@@ -134,7 +134,10 @@ export default {
 }
 </style>
 <style>
-.topic_content  img {
+.topic_content  img{
   max-width: 100%;
+}
+.topic_content pre {
+  overflow: auto;
 }
 </style>
