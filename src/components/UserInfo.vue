@@ -16,7 +16,11 @@
     </section>
     <section class="topics">
       <span>最近创建的主题</span>
-      <router-link v-for="item in user.recent_topics" :key="item.id">{{item.title}}</router-link>
+      <router-link
+        :to="{name:'article',params:{id:item.id}}"
+        v-for="item in user.recent_topics"
+        :key="item.id"
+      >{{item.title}}</router-link>
     </section>
   </div>
 </template>
@@ -46,7 +50,7 @@ img {
   border-radius: 10px;
   width: 100px;
 }
-a{
+a {
   display: block;
 }
 </style>
