@@ -3,7 +3,9 @@
     <section class="mainInfo">
       <div class="topbar">作者</div>
       <div class="authorWrapper">
-        <img :src="res.avatar_url" alt="头像" />
+        <router-link :to="{name: 'user_info', params:{name:res.loginname}}">
+          <img :src="res.avatar_url" alt="头像" />
+        </router-link>
         <div class="idWrapper">
           <div class="id">用户名:{{res.loginname}}</div>
           <div class="score">积分:{{res.score}}</div>
@@ -78,7 +80,7 @@ export default {
 }
 .authorWrapper > .idWrapper > div {
   margin: 10px 0 10px 10px;
-  color: #252A2F;
+  color: #252a2f;
 }
 .replies,
 .topics {
@@ -94,7 +96,7 @@ export default {
 .replies > div {
   margin: 20px 15px 10px;
 }
-a {
+ul > li > a {
   color: #586069;
   font-size: 13px;
   font-weight: 450;
