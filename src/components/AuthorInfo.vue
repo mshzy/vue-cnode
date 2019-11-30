@@ -78,7 +78,7 @@ export default {
 }
 .authorWrapper > .idWrapper > div {
   margin: 10px 0 10px 10px;
-  color: #586069;
+  color: #252A2F;
 }
 .replies,
 .topics {
