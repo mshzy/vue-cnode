@@ -14,10 +14,12 @@
       <li :key="index" v-for="(item,index) in items">
         <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
         <span :class="item.class">{{item.tab}}</span>
-        <router-link :to="{
+        <router-link
+          :to="{
           name:'article',
           params:{name: item.author.loginname, id: item.id}
-          }">
+          }"
+        >
           <span class="title">{{item.title}}</span>
         </router-link>
         <img class="reply" src="../assets/reply.svg" />
@@ -73,11 +75,11 @@ export default {
     }
   },
 }
-
 </script>
 
 <style scoped>
 .mainListWrapper {
+  border-radius: 8px;
   border: 1px solid #d1d5da;
   background-color: #ffffff;
   max-width: 72%;
@@ -85,9 +87,11 @@ export default {
 }
 .type {
   background-color: #f1f8ff;
-  padding: 8px 0 8px 10px;
+  padding: 14px 0 11px 10px;
   font-size: 14px;
   font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .type span {
   color: #1067d6;

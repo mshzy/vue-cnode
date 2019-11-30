@@ -1,5 +1,5 @@
 <template>
-  <div class="UserInfo" v-if="user">
+  <div class="userInfo" v-if="user">
     <section class="mainInfo">
       <img :src="user.avatar_url" alt="头像" />
       <div>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.UserInfo {
+.userInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,7 @@ export default {
   width: 855px;
   background-color: #fff;
   border: 1px solid #d1d5da;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -95,7 +95,7 @@ export default {
   width: 855px;
   background-color: #fff;
   border: 1px solid #d1d5da;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -110,7 +110,7 @@ export default {
   font-weight: 450;
 }
 img {
-  border-radius: 10px;
+  border-radius: 8px;
   width: 120px;
 }
 a {

@@ -58,6 +58,8 @@ export default {
   padding: 8px 0 6px 12px;
   font-size: 13px;
   font-weight: 450;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .article {
@@ -68,6 +70,7 @@ export default {
 #reply,
 .topic_header {
   background-color: #fff;
+  border-radius: 8px;
   border: 1px solid #d1d5da;
 }
 
