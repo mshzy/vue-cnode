@@ -44,10 +44,13 @@ export default {
     this.res = res.data.data
   },
   watch: {
-    $route(to) {
-      this.axios.get(`https://cnodejs.org/api/v1/user/${to.params.name}`)
-        .then(res => this.res = res.data.data)
-        .catch(error => alert(error))
+    async $route(to) {
+      try {
+        let res = await this.axios.get(`https://cnodejs.org/api/v1/user/${to.params.name}`)
+        this.res = res.data.data
+      } catch (error) {
+        alert(error)
+      }
     }
   }
 }
