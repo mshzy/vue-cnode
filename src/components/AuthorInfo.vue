@@ -43,11 +43,11 @@ export default {
     let res = await this.axios.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
     this.res = res.data.data
   },
-  computed:{
-    list(){
+  computed: {
+    list() {
       return {
-        replies:this.res.recent_replies.slice(0,5),
-        topics:this.res.recent_topics.slice(0,5)
+        replies: this.res.recent_replies.slice(0, 5),
+        topics: this.res.recent_topics.slice(0, 5)
       }
     }
   },
