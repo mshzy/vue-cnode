@@ -16,7 +16,7 @@
         <span :class="item.class">{{item.tab}}</span>
         <router-link :to="{
           name:'article',
-          params:{id:item.id}
+          params:{name: item.author.loginname, id: item.id}
           }">
           <span class="title">{{item.title}}</span>
         </router-link>

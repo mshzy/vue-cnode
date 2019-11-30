@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="header">
     <img alt="CNODE社区" src="../assets/logo.svg" @click="home" />
     <ul>
       <li>
@@ -45,7 +45,7 @@ img {
 img:hover {
   cursor: pointer;
 }
-.wrapper {
+.header {
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   background-color: #24292e;
   display: flex;

@@ -41,6 +41,13 @@ export default {
     this.axios.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
       .then(res => this.res = res.data.data)
       .catch(error => alert(error))
+  },
+  watch: {
+    $route(to) {
+      this.axios.get(`https://cnodejs.org/api/v1/topic/${to.params.id}`)
+        .then(res => this.res = res.data.data)
+        .catch(error => alert(error))
+    }
   }
 }
 </script>
@@ -132,6 +139,14 @@ export default {
 .replyContent {
   line-height: 1.6;
 }
+.authorInfo {
+  position: absolute;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #d1d5da;
+  right: 20px;
+  top: 120px;
+}
 </style>
 <style>
 .topic_content img {
@@ -141,6 +156,9 @@ export default {
   max-width: 100%;
 }
 .topic_content pre {
+  overflow: auto;
+}
+.replyContent pre {
   overflow: auto;
 }
 </style>
