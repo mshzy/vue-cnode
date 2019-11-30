@@ -73,6 +73,11 @@ export default {
 a {
   color: #7a8289;
   font-size: 13px;
+  display: inline-block;
+  width: 290px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 img {
   width: 60px;
