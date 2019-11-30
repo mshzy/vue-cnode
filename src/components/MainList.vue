@@ -159,6 +159,7 @@ ul > li > .lastTime {
 }
 .avatar {
   width: 30px;
+  border-radius: 2px;
 }
 
 @keyframes circle {

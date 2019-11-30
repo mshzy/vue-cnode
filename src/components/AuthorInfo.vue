@@ -2,10 +2,12 @@
   <div class="authorInfo" v-if="res">
     <section class="mainInfo">
       <div class="topbar">作者</div>
-      <img :src="res.avatar_url" alt="头像" />
-      <div>
-        <div class="id">{{res.loginname}}</div>
-        <div class="score">积分：{{res.score}}</div>
+      <div class="authorWrapper">
+        <img :src="res.avatar_url" alt="头像" />
+        <div class="idWrapper">
+          <div class="id">用户名:{{res.loginname}}</div>
+          <div class="score">积分:{{res.score}}</div>
+        </div>
       </div>
     </section>
     <section class="replies">
@@ -70,22 +72,55 @@ export default {
   border: 1px solid #d1d5da;
   background-color: #fff;
 }
-a {
-  color: #7a8289;
+.authorWrapper {
+  margin-top: 10px;
+  display: flex;
+}
+.authorWrapper > .idWrapper > div {
+  margin: 10px 0 10px 10px;
+  color: #586069;
+}
+.replies,
+.topics {
+  min-height: 30px;
+}
+.replies > div,
+.topics > div {
+  margin: 10px 15px;
+  color: #24292e;
   font-size: 13px;
+  font-weight: 450;
+}
+.replies > div {
+  margin: 20px 15px 10px;
+}
+a {
+  color: #586069;
+  font-size: 13px;
+  font-weight: 450;
+  margin: 2px 15px;
+  /* 超出部分省略号 */
   display: inline-block;
-  width: 290px;
+  width: 276px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 img {
   width: 60px;
+  height: 60px;
+  border-radius: 6px;
 }
 .mainInfo {
-  margin: 20px;
+  margin: 16px;
 }
 .mainInfo > .topbar {
-  background-color: #f1f8ff;
+  font-size: 13px;
+  font-weight: 450;
+  color: #24292e;
+}
+.mainInfo > div > div {
+  font-size: 12px;
+  font-weight: 450;
 }
 </style>

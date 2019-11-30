@@ -81,6 +81,7 @@ export default {
   width: 28px;
   position: relative;
   bottom: -9px;
+  border-radius: 4px;
 }
 
 #reply a,
