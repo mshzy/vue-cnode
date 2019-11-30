@@ -11,7 +11,7 @@
     <section class="replies">
       <div>最近回复</div>
       <ul>
-        <li v-for="item in res.recent_replies" :key="item.id">
+        <li v-for="item in list.replies" :key="item.id">
           <router-link
             :to="{name:'article',params:{name:item.author.loginname,id:item.id}}"
           >{{item.title}}</router-link>
@@ -21,7 +21,7 @@
     <section class="topics">
       <div>最近主题</div>
       <ul>
-        <li v-for="item in res.recent_topics" :key="item.id">
+        <li v-for="item in list.topics" :key="item.id">
           <router-link
             :to="{name:'article',params:{name:item.author.loginname,id:item.id}}"
           >{{item.title}}</router-link>
@@ -42,6 +42,14 @@ export default {
   async created() {
     let res = await this.axios.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
     this.res = res.data.data
+  },
+  computed:{
+    list(){
+      return {
+        replies:this.res.recent_replies.slice(0,5),
+        topics:this.res.recent_topics.slice(0,5)
+      }
+    }
   },
   watch: {
     async $route(to) {
@@ -65,6 +73,9 @@ export default {
 a {
   color: #7a8289;
   font-size: 13px;
+}
+img {
+  width: 60px;
 }
 .mainInfo {
   margin: 20px;
