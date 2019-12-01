@@ -26,7 +26,10 @@
         <div v-html="reply.content" class="replyContent"></div>
       </div>
     </div>
-    
+    <div class="backToTop">
+      <img src="../assets/back-top.svg" @click="backToTop" />
+      <p>回到顶部</p>
+    </div>
   </div>
 </template>
 
@@ -48,6 +51,11 @@ export default {
       this.axios.get(`https://cnodejs.org/api/v1/topic/${to.params.id}`)
         .then(res => this.res = res.data.data)
         .catch(error => alert(error))
+    }
+  },
+  methods: {
+    backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 }
@@ -151,6 +159,21 @@ export default {
   border: 1px solid #d1d5da;
   right: 20px;
   top: 120px;
+}
+.backToTop > img {
+  width: 40px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.backToTop {
+  position: fixed;
+  right: 20%;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #586069;
+  font-size: 12px;
 }
 </style>
 <style>
