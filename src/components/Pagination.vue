@@ -10,6 +10,7 @@
       :class="{active: num === currentPage, page: true}"
     >{{num}}</button>
     <div>...</div>
+    <button class="page" @click="nextPage">下一页</button>
   </div>
 </template>
 
@@ -30,16 +31,20 @@ export default {
       } else {
         this.numbers = [1, 2, 3, 4, 5]
       }
-      this.$emit('update',num)
+      this.$emit('update', num)
     },
     lastPage() {
       if (this.currentPage > 1) {
         let num = this.currentPage - 1
         this.handle(num)
-      }else {
-        this.currentPage = 1 
+      } else {
+        this.currentPage = 1
         this.handle(1)
       }
+    },
+    nextPage() {
+      let num = this.currentPage + 1
+      this.handle(num)
     }
   }
 }
