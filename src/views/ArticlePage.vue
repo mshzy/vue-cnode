@@ -19,7 +19,7 @@ export default {
     Article,
     AuthorInfo
   }
-} 
+}
 </script>
 
 <style scoped>

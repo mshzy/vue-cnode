@@ -1,57 +1,67 @@
 <template>
   <div class="mainListWrapper">
-    <div class="type">
-      <span @click="loadList()">全部</span>
-      <span @click="loadList('good')">精华</span>
-      <span @click="loadList('share')">分享</span>
-      <span @click="loadList('ask')">问答</span>
-      <span @click="loadList('job')">招聘</span>
-    </div>
-    <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.svg" />
-    </div>
-    <ul>
-      <li :key="index" v-for="(item,index) in items">
-        <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
-        <span :class="item.class">{{item.tab}}</span>
-        <router-link
-          :to="{
+    <div class="mainList">
+      <div class="type">
+        <span @click="loadList(null,1)">全部</span>
+        <span @click="loadList('good',1)">精华</span>
+        <span @click="loadList('share',1)">分享</span>
+        <span @click="loadList('ask',1)">问答</span>
+        <span @click="loadList('job',1)">招聘</span>
+      </div>
+      <div class="loading" v-if="isLoading">
+        <img src="../assets/loading.svg" />
+      </div>
+      <ul v-else>
+        <li :key="index" v-for="(item,index) in items">
+          <img class="avatar" :src="item.author.avatar_url" alt="avatar" />
+          <span :class="item.class">{{item.tab}}</span>
+          <router-link
+            :to="{
           name:'article',
           params:{name: item.author.loginname, id: item.id}
           }"
-        >
-          <span class="title">{{item.title}}</span>
-        </router-link>
-        <img class="reply" src="../assets/reply.svg" />
-        <span class="replyCount">{{item.reply_count}}/{{item.visit_count}}</span>
-        <span class="lastTime">{{item.last_reply_at | formatDate}}</span>
-      </li>
-    </ul>
+          >
+            <span class="title">{{item.title}}</span>
+          </router-link>
+          <img class="reply" src="../assets/reply.svg" />
+          <span class="replyCount">{{item.reply_count}}/{{item.visit_count}}</span>
+          <span class="lastTime">{{item.last_reply_at | formatDate}}</span>
+        </li>
+      </ul>
+    </div>
+    <Pagination @update="loadList(type,$event)" v-show="!isLoading" />
   </div>
 </template>
 
 <script>
+import Pagination from './Pagination'
+
 export default {
   name: 'MainList',
   data() {
     return {
       isLoading: true,
-      items: []
+      items: null,
+      type: null
     }
   },
+  components: {
+    Pagination
+  },
   created() {
-    this.loadList()
+    this.loadList(null, 1)
   },
   methods: {
-    async loadList(type) {
-      this.isLoading = true
-      this.items = []
+    async loadList(type, page) {
       let res
       if (type) {
-        let url = `https://cnodejs.org/api/v1/topics?limit=20&page=1&tab=${type}`
+        this.type = type
+        let url = `https://cnodejs.org/api/v1/topics?limit=20&page=${page}&tab=${type}`
         res = await this.axios.get(url)
-      } else
-        res = await this.axios.get('https://cnodejs.org/api/v1/topics?limit=20&page=1')
+      } else {
+        this.type = null
+        res = await this.axios.get(`https://cnodejs.org/api/v1/topics?limit=20&page=${page}`)
+      }
       this.isLoading = false
       for (const v of res.data.data) {
         if (v.good == true) {
@@ -72,13 +82,14 @@ export default {
         }
       }
       this.items = res.data.data
+      
     }
   },
 }
 </script>
 
 <style scoped>
-.mainListWrapper {
+.mainList {
   border-radius: 8px;
   border: 1px solid #d1d5da;
   background-color: #ffffff;
