@@ -52,7 +52,6 @@ export default {
 
 <style scoped>
 .pagination {
-  border: 1px solid red;
   height: 60px;
   width: 60%;
   margin: 20px auto 50px;
@@ -61,8 +60,11 @@ export default {
   align-items: center;
 }
 .page {
+  font-weight: 450;
+  font-size: 14px;
+  color: #353535;
   border: 1px solid #d1d5da;
-  padding: 4px 20px;
+  padding: 4px 16px;
   margin: 4px 6px;
   border-radius: 4px;
   cursor: pointer;
