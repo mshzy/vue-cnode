@@ -84,7 +84,7 @@ export default {
       this.items = res.data.data
       window.scrollTo({
         top: 0,
-        behavior:'smooth'
+        behavior: 'smooth'
       })
     }
   },
@@ -128,6 +128,9 @@ ul > li {
   justify-content: flex-start;
   align-items: center;
 }
+ul > li > a {
+  width: 60%;
+}
 ul > li:hover {
   background-color: #f6f8fa;
 }
@@ -160,6 +163,11 @@ ul > li .title {
   color: #24292e;
   margin-left: 14px;
   margin-top: 3px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 ul > li > .replyCount {
   color: #8d8d8d;
